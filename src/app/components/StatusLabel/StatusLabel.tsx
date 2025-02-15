@@ -15,7 +15,7 @@ export interface StatusLabelProps {
 export default function StatusLabel({ children, status }: StatusLabelProps) {
   return (
     <div
-      className={`inline-flex items-center py-1 px-32 rounded-3xl text-sm font-medium ${
+      className={`inline-flex items-center py-1 px-3.5 rounded-3xl text-sm font-medium ${
         (status === Status.Active && 'text-green-700 bg-green-100') ||
         (status === Status.NotActive && 'text-red-700 bg-red-100') ||
         (status === Status.Pending && 'text-orange-700 bg-orange-100') ||
