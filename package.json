@@ -4,17 +4,20 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@tailwindcss/postcss": "^4.0.6",
+    "clsx": "^2.1.1",
+    "formik": "^2.4.6",
     "next": "15.1.7",
+    "postcss": "^8.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwindcss": "^4.0.6",
-    "@tailwindcss/postcss": "^4.0.6",
-    "postcss": "^8.5.2"
+    "tailwindcss": "^4.0.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
