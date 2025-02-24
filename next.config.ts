@@ -3,7 +3,7 @@ import type { NextConfig } from 'next';
 /* Version for GH-pages */
 const nextConfig: NextConfig = {
   /* config options here */
-  basePath: process.env.NODE_ENV === 'production' ? '/crm' : '',
+  basePath: '/crm',
   output: 'export',
   reactStrictMode: true,
   images: {
