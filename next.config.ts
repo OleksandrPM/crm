@@ -1,9 +1,12 @@
 import type { NextConfig } from 'next';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 /* Version for GH-pages */
 const nextConfig: NextConfig = {
   /* config options here */
-  basePath: '/crm',
+  assetPrefix: isProd ? '/crm/' : '',
+  basePath: isProd ? '/crm' : '',
   output: 'export',
   reactStrictMode: true,
   images: {
