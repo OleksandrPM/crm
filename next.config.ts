@@ -3,10 +3,7 @@ import type { NextConfig } from 'next';
 const isProd = process.env.NODE_ENV === 'production';
 
 /* Version for GH-pages */
-const nextConfig: NextConfig = {
-  /* config options here */
-  assetPrefix: isProd ? '' : '',
-  basePath: isProd ? '' : '',
+const productionConfig: NextConfig = {
   output: 'export',
   reactStrictMode: true,
   images: {
@@ -15,6 +12,8 @@ const nextConfig: NextConfig = {
 };
 
 /* Base version */
-// const nextConfig: NextConfig = {};
+const baseConfig: NextConfig = {};
+
+const nextConfig: NextConfig = isProd ? productionConfig : baseConfig;
 
 export default nextConfig;
