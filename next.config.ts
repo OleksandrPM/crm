@@ -5,8 +5,8 @@ const isProd = process.env.NODE_ENV === 'production';
 /* Version for GH-pages */
 const nextConfig: NextConfig = {
   /* config options here */
-  assetPrefix: isProd ? '/crm/' : '',
-  basePath: isProd ? '/crm' : '',
+  assetPrefix: isProd ? '' : '',
+  basePath: isProd ? '' : '',
   output: 'export',
   reactStrictMode: true,
   images: {
