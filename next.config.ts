@@ -11,6 +11,8 @@ if (isProd) {
   nextConfig.basePath = '/crm';
   nextConfig.images = {
     unoptimized: true, // Required for static export
+    loader: 'custom',
+    loaderFile: './gh-loader.ts',
   };
 }
 
