@@ -1,6 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
+
+import Head from 'next/head';
+
+const font = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -12,7 +16,7 @@ export default function RootLayout({
       <Head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
-      <body>{children}</body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }
