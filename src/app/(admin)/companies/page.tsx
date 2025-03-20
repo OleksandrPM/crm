@@ -6,7 +6,7 @@ import { Status } from '@/app/components/StatusLabel';
 
 // export interface PageProps {}
 
-export default function Page({}) {
+export default function Page() {
   return (
     <CompanyTable>
       <CompanyRow
