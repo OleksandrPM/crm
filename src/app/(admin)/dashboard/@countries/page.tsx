@@ -6,9 +6,9 @@ import Image from 'next/image';
 
 import DashboardCard from '@/app/components/DashboardCard';
 
-export interface PageProps {}
+// export interface PageProps {}
 
-export default async function Page({}: PageProps) {
+export default async function Page() {
   const data = await getSummaryCountries();
 
   return (

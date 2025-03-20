@@ -7,9 +7,9 @@ import SummaryTable from '@/app/components/SummaryTable';
 import SummaryTableHeader from '@/app/components/SummaryTableHeader';
 import SummaryTableCell from '@/app/components/SummaryTableCell';
 
-export interface PageProps {}
+// export interface PageProps {}
 
-export default async function Page({}: PageProps) {
+export default async function Page() {
   const data = await getSummaryPromotions();
 
   return (

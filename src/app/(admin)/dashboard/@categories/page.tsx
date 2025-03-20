@@ -5,9 +5,9 @@ import { getSummaryCategories } from '@/lib/api';
 import DashboardCard from '@/app/components/DashboardCard';
 import StatCard, { StatCardType } from '@/app/components/StatCard';
 
-export interface PageProps {}
+// export interface PageProps {}
 
-export default async function Page({}: PageProps) {
+export default async function Page() {
   const data = await getSummaryCategories();
 
   return (

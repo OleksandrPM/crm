@@ -8,7 +8,7 @@ import SummaryTableHeader from '@/app/components/SummaryTableHeader';
 import SummaryTableCell from '@/app/components/SummaryTableCell';
 import MagicButton from '@/app/components/MagicButton';
 
-export interface PageProps {}
+// export interface PageProps {}
 
 export type SalesType = {
   companyId: number;
@@ -17,7 +17,7 @@ export type SalesType = {
   income: number;
 };
 
-export default async function Page({}: PageProps) {
+export default async function Page() {
   const data: SalesType[] = await new Promise((res) => {
     setTimeout(() => {
       res(getSummarySales());
