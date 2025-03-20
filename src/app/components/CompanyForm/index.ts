@@ -1,4 +1,4 @@
 import CompanyForm, { CompanyFormProps } from './CompanyForm';
 
-export { CompanyForm };
+export default CompanyForm;
 export type { CompanyFormProps };

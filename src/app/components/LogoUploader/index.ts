@@ -1,3 +1,3 @@
 import LogoUploader from './LogoUploader';
 
-export { LogoUploader };
+export default LogoUploader;
