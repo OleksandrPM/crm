@@ -7,7 +7,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 // export interface SidebarProps {}
 
-export default function Sidebar({}) {
+export default function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
 
