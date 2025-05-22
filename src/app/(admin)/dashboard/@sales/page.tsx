@@ -6,7 +6,6 @@ import DashboardCard from '@/app/components/DashboardCard';
 import SummaryTable from '@/app/components/SummaryTable';
 import SummaryTableHeader from '@/app/components/SummaryTableHeader';
 import SummaryTableCell from '@/app/components/SummaryTableCell';
-import MagicButton from '@/app/components/MagicButton';
 
 // export interface PageProps {}
 
@@ -18,20 +17,10 @@ export type SalesType = {
 };
 
 export default async function Page() {
-  const data: SalesType[] = await new Promise((res) => {
-    setTimeout(() => {
-      res(getSummarySales());
-    }, 4000);
-  });
+  const data = await getSummarySales();
 
   return (
-    <DashboardCard
-      label={
-        <>
-          Sales details <MagicButton />
-        </>
-      }
-    >
+    <DashboardCard label={<>Sales details</>}>
       <SummaryTable
         headers={
           <>

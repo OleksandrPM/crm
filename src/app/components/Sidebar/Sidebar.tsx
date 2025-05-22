@@ -26,22 +26,26 @@ export default function Sidebar() {
           alt="logo"
         />
         <ul className="space-y-7">
-          <SidebarItem
-            current={pathname === '/dashboard'}
-            pathname="/dashboard"
-            src="/icons/squares.svg"
-            alt="dashboard icon"
-          >
-            Dashboard
-          </SidebarItem>
-          <SidebarItem
-            current={pathname === '/companies'}
-            pathname="/companies"
-            src="/icons/briefcase.svg"
-            alt="companies icon"
-          >
-            Companies
-          </SidebarItem>
+          <li>
+            <SidebarItem
+              current={pathname === '/dashboard'}
+              pathname="/dashboard"
+              src="/icons/squares.svg"
+              alt="dashboard icon"
+            >
+              Dashboard
+            </SidebarItem>
+          </li>
+          <li>
+            <SidebarItem
+              current={pathname === '/companies'}
+              pathname="/companies"
+              src="/icons/briefcase.svg"
+              alt="companies icon"
+            >
+              Companies
+            </SidebarItem>
+          </li>
         </ul>
         <button
           className="flex items-center gap-2 p-6 mt-auto mx-auto"
