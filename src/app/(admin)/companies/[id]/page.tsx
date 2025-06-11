@@ -1,38 +1,49 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { notFound } from 'next/navigation';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+import { Company, getCompany, getPromotions } from '@/lib/api';
+import getQueryClient from '@/lib/utils/getQueryClient';
+import { CompanyInfo } from '@/app/components/CompanyInfo';
+import { CompanyPromotions } from '@/app/components/CompanyPromotions';
 
 export interface PageProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
-export default function Page({ params }: PageProps) {
-  const [id, setId] = useState<string | null>(null);
+export default async function Page({ params }: PageProps) {
+  const queryClient = getQueryClient();
 
-  useEffect(() => {
-    params
-      .then(({ id }) => {
-        const idNumber = Number.parseInt(id);
+  await queryClient.prefetchQuery({
+    queryKey: ['companies', params.id],
+    queryFn: () => getCompany(params.id, { cache: 'no-store' }),
+    staleTime: 10 * 1000,
+  });
 
-        if (Number.isNaN(idNumber)) {
-          // Redirect or handle invalid ID
-          notFound();
-        } else {
-          setId(id);
-        }
-      })
-      .catch(() => {
-        notFound(); // Handle promise rejection
-      });
-  }, [params]);
+  await queryClient.prefetchQuery({
+    queryKey: ['promotions', params.id],
+    queryFn: () =>
+      getPromotions({ companyId: params.id }, { cache: 'no-store' }),
+    staleTime: 10 * 1000,
+  });
 
-  // Render nothing until 'id' is resolved
-  if (!id) return null;
+  const company = queryClient.getQueryData(['companies', params.id]) as Company;
+
+  if (!company) {
+    notFound();
+  }
+
+  const dehydratedState = dehydrate(queryClient);
 
   return (
-    <div className="py-6 px-10">
-      <p>{`Information about company (${id})`}</p>
-    </div>
+    <HydrationBoundary state={dehydratedState}>
+      <div className="py-6 px-10 grid grid-cols-12 gap-5">
+        <div className="col-span-3">
+          <CompanyInfo companyId={params.id} />
+        </div>
+        <div className="col-span-9">
+          <CompanyPromotions companyId={params.id} />
+        </div>
+      </div>
+    </HydrationBoundary>
   );
 }

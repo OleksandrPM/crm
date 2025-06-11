@@ -1,35 +1,22 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Company, getCompany } from '@/lib/api';
+import getQueryClient from '@/lib/utils/getQueryClient';
 import Header from '@/app/components/Header';
-import { notFound } from 'next/navigation';
 
 export interface PageProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
-export default function Page({ params }: PageProps) {
-  const [id, setId] = useState<string | null>(null);
+export default async function Page({ params }: PageProps) {
+  const queryClient = getQueryClient();
 
-  useEffect(() => {
-    params
-      .then(({ id }) => {
-        const idNumber = Number.parseInt(id);
+  await queryClient.prefetchQuery({
+    queryKey: ['companies', params.id],
+    queryFn: () => getCompany(params.id, { cache: 'no-store' }),
+    staleTime: 10 * 1000,
+  });
 
-        if (Number.isNaN(idNumber)) {
-          // Redirect or handle invalid ID
-          notFound();
-        } else {
-          setId(id);
-        }
-      })
-      .catch(() => {
-        notFound(); // Handle promise rejection
-      });
-  }, [params]);
+  const company = queryClient.getQueryData(['companies', params.id]) as Company;
 
-  // Render nothing until 'id' is resolved
-  if (!id) return null;
-
-  return <Header>{`Company (${id})`}</Header>;
+  return <Header>{company?.title}</Header>;
 }

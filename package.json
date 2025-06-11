@@ -12,9 +12,11 @@
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@tailwindcss/postcss": "^4.0.6",
+    "@tanstack/react-query": "^5.80.6",
+    "@tanstack/react-query-devtools": "^5.79.2",
     "clsx": "^2.1.1",
     "formik": "^2.4.6",
-    "next": "15.1.7",
+    "next": "15.2.4",
     "postcss": "^8.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
